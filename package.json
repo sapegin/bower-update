@@ -1,0 +1,54 @@
+{
+  "name": "bower-update",
+  "description": "Updates Bower components to the really latest versions.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/sapegin/bower-update",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sapegin/bower-update.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sapegin/bower-update/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sapegin/bower-update/blob/master/License.md"
+    }
+  ],
+  "main": "index.js",
+  "bin": {
+    "bower-update": "bin/bower-update"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "jshint": "jshint index.js",
+    "jscs": "jscs index.js",
+    "prepare": "cd test && rm -f bower.json && cp src/bower.json . && bower install",
+    "mocha": "mocha --timeout 30000 --reporter spec --compilers coffee:coffee-script/register",
+    "test": "npm run jshint && npm run jscs && npm run prepare && npm run mocha"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "bower": "~1.3.2",
+    "async": "~0.7.0",
+    "lodash": "~2.4.1",
+    "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "coffee-script": "~1.7.1",
+    "chai": "~1.9.1",
+    "jshint": "~2.5.0",
+    "jscs": "~1.3.0"
+  },
+  "keywords": [
+    "bower"
+  ]
+}

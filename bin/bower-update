@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+/*
+ * CLI for bower-update
+ *
+ * @author Artem Sapegin (http://sapegin.me)
+ */
+
+var chalk = require('chalk');
+var updater = require('../index');
+
+updater({
+	cwd: process.cwd()
+}, function (err, updated) {
+	if (err) {
+		console.log(chalk.red.underline(err));
+	}
+	else {
+		var number = updated.length;
+		console.log('%d component%s updated.\n', number, number === 1 ? '' : 's');
+		updated.forEach(function(component) {
+			console.log(component.name + ':', chalk.red(component.then), '→', chalk.green(component.now));
+		});
+	}
+});
