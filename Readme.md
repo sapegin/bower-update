@@ -19,6 +19,7 @@ Just `cd` to your project’s root folder (where your `bower.json` is located) a
 
 ```
 bower-update
+bower-update --interactive
 ```
 
 
