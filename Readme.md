@@ -18,7 +18,7 @@ npm install -g bower-update
 Just `cd` to your project’s root folder (where your `bower.json` is located) and run:
 
 ```
-bower-update
+bower-update [--interactive]
 ```
 
 

@@ -8,9 +8,18 @@
 
 var chalk = require('chalk');
 var updater = require('../index');
+var opts = require('opts');
+
+opts.parse([
+	{
+		'long': 'interactive',
+		'description': 'update interactive'
+	},
+]);
 
 updater({
-	cwd: process.cwd()
+	cwd: process.cwd(),
+	interactive : opts.get('interactive')
 }, function (err, updated) {
 	if (err) {
 		console.log(chalk.red.underline(err));
