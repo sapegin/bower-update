@@ -9,26 +9,49 @@
 var chalk = require('chalk');
 var updater = require('../index');
 var opts = require('opts');
+var pkg = require('../package.json');
 
 opts.parse([
 	{
-		'long': 'interactive',
-		'description': 'Ask before updating every component.'
+		short : 'v',
+		long: 'version',
+		description: 'Show version.',
+		callback: showVersion
+	},
+	{
+		short : '?',
+		long: 'help',
+		description: 'Show this help message',
+		callback: opts.help
+	},
+	{
+		short: 'i',
+		long: 'interactive',
+		description: 'Ask before updating every component.'
 	}
 ]);
 
-updater({
-	cwd: process.cwd(),
-	interactive: opts.get('interactive')
-}, function (err, updated) {
-	if (err) {
-		console.log(chalk.red.underline(err));
-	}
-	else {
-		var number = updated.length;
-		console.log('%d component%s updated.\n', number, number === 1 ? '' : 's');
-		updated.forEach(function(component) {
-			console.log(component.name + ':', chalk.red(component.then), '→', chalk.green(component.now));
-		});
-	}
-});
+main();
+
+function showVersion() {
+	process.stdout.write(pkg.version + '\n');
+	process.exit();
+}
+
+function main() {
+	updater({
+		cwd: process.cwd(),
+		interactive: opts.get('interactive')
+	}, function (err, updated) {
+		if (err) {
+			console.log(chalk.red.underline(err));
+		}
+		else {
+			var number = updated.length;
+			console.log('%d component%s updated.\n', number, number === 1 ? '' : 's');
+			updated.forEach(function(component) {
+				console.log(component.name + ':', chalk.red(component.then), '→', chalk.green(component.now));
+			});
+		}
+	});
+}
