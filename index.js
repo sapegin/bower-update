@@ -55,9 +55,9 @@ module.exports = function(options, allDone) {
 		if (component.update.target === component.update.latest) return false;
 		if (options.interactive) {
 			console.log(component.pkgMeta.name + ': ' +  chalk.red(component.update.target) + ' → ' + chalk.green(component.update.latest));
-			var q = 'Upgrade now? [Y]es, [N]o:';
+			var q = 'Upgrade now? (y/N):';
 			var answer = readlineSync.question(q);
-			if (answer !== 'Y') return false;
+			if (answer !== 'y') return false;
 		}
 		return true;
 	};
