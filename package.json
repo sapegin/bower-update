@@ -1,7 +1,7 @@
 {
   "name": "bower-update",
   "description": "Updates Bower components to the really latest versions.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/sapegin/bower-update",
   "author": {
     "name": "Artem Sapegin",
