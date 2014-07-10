@@ -7,31 +7,28 @@
  */
 
 var chalk = require('chalk');
+var nomnom = require('nomnom');
 var updater = require('../index');
-var opts = require('opts');
 var pkg = require('../package.json');
 
-opts.parse([
-	{
-		short : 'v',
-		long: 'version',
-		description: 'Show version.',
+var opts = nomnom
+	.script('bower-update')
+	.option('version', {
+		abbr: 'v',
+		flag: true,
+		help: 'Show version.',
 		callback: showVersion
-	},
-	{
-		short : '?',
-		long: 'help',
-		description: 'Show this help message',
-		callback: opts.help
-	},
-	{
-		short: 'i',
-		long: 'interactive',
-		description: 'Ask before updating every component.'
-	}
-]);
+	})
+	.option('interactive', {
+		abbr: 'i',
+		flag: true,
+		help: 'Ask before updating every component.'
+	})
+	.parse();
+
 
 main();
+
 
 function showVersion() {
 	process.stdout.write(pkg.version + '\n');
@@ -41,7 +38,7 @@ function showVersion() {
 function main() {
 	updater({
 		cwd: process.cwd(),
-		interactive: opts.get('interactive')
+		interactive: opts.interactive
 	}, function (err, updated) {
 		if (err) {
 			console.log(chalk.red.underline(err));
