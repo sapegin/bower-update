@@ -21,6 +21,12 @@ Just `cd` to your project’s root folder (where your `bower.json` is located) a
 bower-update [--interactive]
 ```
 
+### Options
+
+#### interactive
+
+bower-update will ask you before updating any component.
+
 
 ## Changelog
 
