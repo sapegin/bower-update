@@ -6,6 +6,7 @@ Updates Bower project’s components to the really latest versions, no matter wh
 
 For example if your `bower.json` requires jQuery `~2.0.0` standard `bower update` command will install 2.0.9 but not 2.1.0. `bower-update` will install 2.1.0, 3.0.0, etc.
 
+![](http://wow.sapegin.me/image/24132B3P3M2D/Image%202014-07-10%20at%2012.34.39%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BF%D0%BE%D0%BB%D1%83%D0%B4%D0%BD%D1%8F.png)
 
 ## Installation
 
