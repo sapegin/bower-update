@@ -52,7 +52,7 @@ module.exports = function(options, allDone) {
 	};
 
 	var isUpdateAvailable = function(component) {
-		if (component.update.target === component.update.latest) return false;
+		if (!component.update || component.update.target === component.update.latest) return false;
 		if (options.interactive) {
 			console.log(component.pkgMeta.name + ': ' +  chalk.red(component.update.target) + ' → ' + chalk.green(component.update.latest));
 			var answer = readlineSync.question('Upgrade now? (y/N)').toLowerCase();
