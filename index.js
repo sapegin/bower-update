@@ -35,7 +35,7 @@ module.exports = function(options, allDone) {
 			return;
 		}
 
-		var endpoints = _.map(components, function(component) { return component.pkgMeta.name; });
+		var endpoints = _.map(components, function(component) { return component.endpoint.name; });
 		bower.commands.install(endpoints, {save: true, forceLatest: true}, bowerConfig)
 			.on('end', function(installed) {
 				installed = _.map(installed, function(component) {
