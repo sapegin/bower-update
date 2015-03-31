@@ -1,6 +1,6 @@
 # bower-update
 
-[![Build Status](https://travis-ci.org/sapegin/bower-update.png)](https://travis-ci.org/sapegin/bower-update)
+[![Build Status](https://travis-ci.org/sapegin/bower-update.svg)](https://travis-ci.org/sapegin/bower-update)
 
 Updates Bower project’s components to the really latest versions, no matter what `bower.json` requires.
 
