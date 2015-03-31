@@ -35,7 +35,7 @@ module.exports = function(options, allDone) {
 			return;
 		}
 
-		var endpoints = _.map(components, function(component) { return component.pkgMeta.name; });
+		var endpoints = _.map(components, function(component) { return component.endpoint.name; });
 		bower.commands.install(endpoints, {save: true, forceLatest: true}, bowerConfig)
 			.on('end', function(installed) {
 				installed = _.map(installed, function(component) {
@@ -60,7 +60,7 @@ module.exports = function(options, allDone) {
 	var isUpdateAvailable = function(component) {
 		if (!component.update || component.update.target === component.update.latest) return false;
 		if (options.interactive) {
-			console.log(component.pkgMeta.name + ': ' +  chalk.red(component.update.target) + ' → ' + chalk.green(component.update.latest));
+			console.log(component.endpoint.name + ': ' +  chalk.red(component.update.target) + ' → ' + chalk.green(component.update.latest));
 			var answer = readlineSync.question('Upgrade now? (y/N)').toLowerCase();
 			return answer === 'y';
 		}
