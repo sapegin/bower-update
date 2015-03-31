@@ -59,8 +59,9 @@ module.exports = function(options, allDone) {
 		if (!component.update || component.update.target === component.update.latest) return false;
 		if (options.interactive) {
 			console.log(component.endpoint.name + ': ' +  chalk.red(component.update.target) + ' → ' + chalk.green(component.update.latest));
-			var answer = readlineSync.question('Upgrade now? (y/N)').toLowerCase();
-			return answer === 'y';
+			var answer = readlineSync.question('Update? (Y/n)').toLowerCase() !== 'n';
+			console.log(answer ? 'Updated.\n' : 'Skipped.\n');
+			return answer;
 		}
 		return true;
 	};

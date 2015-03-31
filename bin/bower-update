@@ -6,6 +6,8 @@
  * @author Artem Sapegin (http://sapegin.me)
  */
 
+'use strict';
+
 var chalk = require('chalk');
 var nomnom = require('nomnom');
 var updater = require('../index');
@@ -19,7 +21,7 @@ var opts = nomnom
 		help: 'Show version.',
 		callback: showVersion
 	})
-	.option('interactive', {
+	.option('non-interactive', {
 		abbr: 'i',
 		flag: true,
 		help: 'Ask before updating every component.'
@@ -38,13 +40,16 @@ function showVersion() {
 function main() {
 	updater({
 		cwd: process.cwd(),
-		interactive: opts.interactive
+		interactive: !opts.interactive
 	}, function (err, updated) {
 		if (err) {
 			console.log(chalk.red.underline(err));
 		}
 		else {
 			var number = updated.length;
+			if (opts.interactive) {
+				console.log('\n');
+			}
 			console.log('%d component%s updated.\n', number, number === 1 ? '' : 's');
 			updated.forEach(function(component) {
 				console.log(component.name + ':', chalk.red(component.then), '→', chalk.green(component.now));
