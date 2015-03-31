@@ -38,21 +38,19 @@ module.exports = function(options, allDone) {
 		var endpoints = _.map(components, function(component) { return component.endpoint.name; });
 		bower.commands.install(endpoints, {save: true, forceLatest: true}, bowerConfig)
 			.on('end', function(installed) {
-				installed = _.map(installed, function(component) {
-					var name = component.pkgMeta.name;
-					var deps = data.dependencies[name];
-					if (deps) {
-						return {
+				var updated = [];
+				_.each(installed, function(component) {
+					var name = component.endpoint.name;
+					var meta = data.dependencies[name];
+					if (meta) {
+						updated.push({
 							name: name,
-							now: component.pkgMeta.version,
-							then: deps.update.target
-						};
-					}
-					else {
-						return null;
+							now: meta.update.latest,
+							then: meta.update.target
+						});
 					}
 				});
-				done(null, installed);
+				done(null, updated);
 			})
 		;
 	};
