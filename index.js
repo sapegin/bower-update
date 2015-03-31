@@ -40,11 +40,17 @@ module.exports = function(options, allDone) {
 			.on('end', function(installed) {
 				installed = _.map(installed, function(component) {
 					var name = component.pkgMeta.name;
-					return {
-						name: name,
-						now: component.pkgMeta.version,
-						then: data.dependencies[name].update.target
-					};
+					var deps = data.dependencies[name];
+					if (deps) {
+						return {
+							name: name,
+							now: component.pkgMeta.version,
+							then: deps.update.target
+						};
+					}
+					else {
+						return null;
+					}
 				});
 				done(null, installed);
 			})
