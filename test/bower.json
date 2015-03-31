@@ -5,10 +5,11 @@
   "private": true,
   "dependencies": {
     "jquery": "~2.1.0",
-    "fotorama": "~4.6.2",
-    "lodash": "~2.4.1"
+    "fotorama": "~4.6.3",
+    "lodash": "~3.6.0"
   },
   "resolutions": {
-    "fotorama": "~4.6.2"
+    "fotorama": "~4.6.3",
+    "lodash": "~3.6.0"
   }
 }
