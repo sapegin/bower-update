@@ -24,6 +24,7 @@ var opts = nomnom
 	.option('non-interactive', {
 		abbr: 'i',
 		flag: true,
+		default: false,
 		help: 'Ask before updating every component.'
 	})
 	.parse();
@@ -40,14 +41,14 @@ function showVersion() {
 function main() {
 	updater({
 		cwd: process.cwd(),
-		interactive: !opts.interactive
+		interactive: !opts['non-interactive']
 	}, function (err, updated) {
 		if (err) {
 			console.log(chalk.red.underline(err));
 		}
 		else {
 			var number = updated.length;
-			if (opts.interactive) {
+			if (opts['non-interactive']) {
 				console.log('\n');
 			}
 			console.log('%d component%s updated.\n', number, number === 1 ? '' : 's');
