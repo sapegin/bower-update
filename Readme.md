@@ -1,3 +1,12 @@
+# DEPRECATED: Please use [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
+
+npm-check-updates supports bower as of v2.3.0. It has many useful features and is well-maintained.
+
+```sh
+$ npm install -g npm-check-updates
+$ npm-check-updates --packageManager bower   # or 'ncu -m bower' for short
+```
+
 # bower-update
 
 [![Build Status](https://travis-ci.org/sapegin/bower-update.svg)](https://travis-ci.org/sapegin/bower-update)
