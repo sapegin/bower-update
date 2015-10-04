@@ -1,3 +1,7 @@
+### 2015-10-04 v0.2.0
+
+* Add deprecation warning.
+
 ### 2015-03-31 v0.1.0
 
 * Interactive mode is default now.
